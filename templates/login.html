@@ -1,1 +1,34 @@
-<h1>login</h1>
+{% extends 'base.html' %} 
+
+{% block title %}Login{% endblock title %}
+
+{% block content %}
+<div class="card bg-light p-3">
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            <strong>{{ message }}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %}
+    
+    <h3 class="text-dark">Login</h3>
+    <form action="{% url 'handlelogin' %}" method="post">  <!-- Updated with dynamic URL -->
+        {% csrf_token %}
+        
+        <div class="form-group mb-3">
+            <label for="email">Email</label>
+            <input type="email" class="form-control p-2" id="email" name="email" required />
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="pass1">Password</label>
+            <input type="password" class="form-control p-2" id="pass1" name="pass1" required>
+        </div>
+
+        <button type="submit" class="btn btn-dark">Login</button>
+        <br><br>
+
+        <p>New User? <a href="{% url 'signup' %}">Signup</a></p>
+    </form>
+</div>
+{% endblock content %}

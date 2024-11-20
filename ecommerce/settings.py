@@ -11,13 +11,11 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import os
+import django.contrib.messages
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+# Build paths inside the project like this: BASE_DIR / 'subdir' or BASE_DIR / 'subdir'
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-h@x5z50m@yejhbe+uhbiun2z#o$gu-_(bi#(rg3wr-fye5ha%*'
@@ -25,11 +23,9 @@ SECRET_KEY = 'django-insecure-h@x5z50m@yejhbe+uhbiun2z#o$gu-_(bi#(rg3wr-fye5ha%*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -37,8 +33,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'PrimeShop',
-    'authcart',
+    'PrimeShop',  # Custom app for eCommerce functionality
+    'authcart',   # Custom app for authentication and cart functionality
 ]
 
 MIDDLEWARE = [
@@ -53,12 +49,10 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'ecommerce.urls'
 
-BASE_DIR = Path(__file__).resolve().parent.parent
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ["templates"],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],  # Custom template directory
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -71,13 +65,9 @@ TEMPLATES = [
     },
 ]
 
-
 WSGI_APPLICATION = 'ecommerce.wsgi.application'
 
-
 # Database
-# https://docs.djangoproject.com/en/5.1/ref/settings/#databases
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -85,10 +75,7 @@ DATABASES = {
     }
 }
 
-
 # Password validation
-# https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -104,10 +91,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
-# https://docs.djangoproject.com/en/5.1/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -116,25 +100,28 @@ USE_I18N = True
 
 USE_TZ = True
 
+# Email settings
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'aasthachaturvedy58@gmail.com'  # Replace with your email
+EMAIL_HOST_PASSWORD = 'flqs jqho jbuc dggt'  # Replace with your app password
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.1/howto/static-files/
-
-import os 
-
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS=[
-    os.path.join(BASE_DIR,'static')
+# The directory where Django will collect all static files (important for collectstatic)
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),  # Custom static directory
 ]
 
-STATICFILES_DIRS=[
-    os.path.join(BASE_DIR,'static')
-
-]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_collected')  # Static files collection destination
 
 # Default primary key field type
-# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Custom message tags
+MESSAGE_TAGS = {
+    django.contrib.messages.ERROR: 'danger',
+}
