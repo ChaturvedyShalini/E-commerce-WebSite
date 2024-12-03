@@ -1,138 +1,176 @@
 {% extends 'base.html' %}
-{% block title %}Home{% endblock title %}
+
+{% block title %}
+Home
+{% endblock title %}
+
 {% block content %}
 <h1>Welcome to Dhamaka Sales</h1>
-{% endblock content %}
-{% block body %}
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio section">
 
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
+{% for message in messages %}
+  <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+      <strong>{{ message }}</strong>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+{% endfor %}
 
-      
-      {% for message in messages %}
-        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-            <strong>{{ message }}</strong>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    {% endfor %}
+<section id="portfolio" class="portfolio section">
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <div class="section-title">
+      <h2>Welcome to Shop</h2>
+      <h3>Check our <span>Products</span></h3>
+    </div>
 
-
-        <h2>Portfolio</h2>
-        <p><span>Check Our</span> <span class="description-title">Portfolio</span></p>
-      </div><!-- End Section Title -->
-
+    {% for product_list in allProds %}
       <div class="container">
-
-        <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
-
-          <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
-            <li data-filter="*" class="filter-active">All</li>
-            <li data-filter=".filter-app">App</li>
-            <li data-filter=".filter-product">Card</li>
-            <li data-filter=".filter-branding">Web</li>
-          </ul><!-- End Portfolio Filters -->
-
-          <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-              <img src="static/assets/img/masonry-portfolio/masonry-portfolio-1.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>App 1</h4>
-                <p>Lorem ipsum, dolor sit</p>
-                <a href="static/assets/img/masonry-portfolio/masonry-portfolio-1.jpg" title="App 1" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-              <img src="static/assets/img/masonry-portfolio/masonry-portfolio-2.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Product 1</h4>
-                <p>Lorem ipsum, dolor sit</p>
-                <a href="static/assets/img/masonry-portfolio/masonry-portfolio-2.jpg" title="Product 1" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
-              <img src="static/assets/img/masonry-portfolio/masonry-portfolio-3.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Branding 1</h4>
-                <p>Lorem ipsum, dolor sit</p>
-                <a href="static/assets/img/masonry-portfolio/masonry-portfolio-3.jpg" title="Branding 1" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-              <img src="static/assets/img/masonry-portfolio/masonry-portfolio-4.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>App 2</h4>
-                <p>Lorem ipsum, dolor sit</p>
-                <a href="static/assets/img/masonry-portfolio/masonry-portfolio-4.jpg" title="App 2" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-              <img src="static/assets/img/masonry-portfolio/masonry-portfolio-5.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Product 2</h4>
-                <p>Lorem ipsum, dolor sit</p>
-                <a href="static/assets/img/masonry-portfolio/masonry-portfolio-5.jpg" title="Product 2" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
-              <img src="static/assets/img/masonry-portfolio/masonry-portfolio-6.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Branding 2</h4>
-                <p>Lorem ipsum, dolor sit</p>
-                <a href="static/assets/img/masonry-portfolio/masonry-portfolio-6.jpg" title="Branding 2" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-              <img src="static/assets/img/masonry-portfolio/masonry-portfolio-7.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>App 3</h4>
-                <p>Lorem ipsum, dolor sit</p>
-                <a href="static/assets/img/masonry-portfolio/masonry-portfolio-7.jpg" title="App 3" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-              <img src="static/assets/img/masonry-portfolio/masonry-portfolio-8.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Product 3</h4>
-                <p>Lorem ipsum, dolor sit</p>
-                <a href="static/assets/img/masonry-portfolio/masonry-portfolio-8.jpg" title="Product 3" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
-              <img src="static/assets/img/masonry-portfolio/masonry-portfolio-9.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Branding 3</h4>
-                <p>Lorem ipsum, dolor sit</p>
-                <a href="static/assets/img/masonry-portfolio/masonry-portfolio-9.jpg" title="Branding 2" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-          </div><!-- End Portfolio Container -->
-
-        </div>
-
+        <h3 class="my-3 text-center text-success bg-light">{{ product_list.0.category }} Flashsale</h3>
       </div>
 
-    </section><!-- /Portfolio Section -->
-{% endblock body %}
+      <div class="container">
+        <div class="row">
+          {% for product in product_list %}
+            <div class="col-md-3 mt-3">
+              <img src=`/media/images/images/{{ product.image }}` class="card-img-top" alt="not found" height="200px" width="150px"/>
+              <div class="card-body">
+                <h5 class="card-title mt-2" id="namepr{{ product.id }}">{{ product.product_name }}</h5>
+                <p class="card-text">{{ product.desc|slice:":53" }}...</p>
+                <h6 class="card-title mb-3">Price: <span id="pricepr{{ product.id }}">{{ product.price }}</span></h6>
+                <span id="divpr{{ product.id }}" class="divpr">
+                    <button id="pr{{ product.id }}" class="btn btn-danger cart btn-sm mt-0">Add to Cart<i class="fa-solid fa-cart-shopping">
+                    </i></button>
+                </span>
+              </div>
+              <a href="/media/{{ product.image }}">
+                <button class="btn btn-dark btn-sm">View Image<i class="fa-solid fa-eye"></i></button>
+              </a>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</section><!-- /Portfolio Section -->
 
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" 
+        integrity="sha256-tsQFqpERt7Ujj6A+fjCr3GZy6pC9PTAYL1v1qxVrRo4=" 
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" 
+        integrity="sha384-wHAiFfRLMFy615SRaxvfOCifBUQy1xHdJ/yo17FRNXMRBu5wHdZYu1hA6Z0blgut" 
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" 
+        integrity="sha384-B0UglyR+jN6ABu6zY/r+PZf5LBUS3gknPhz36sybYRmowfWqlLGjq2TItE2mda2y" 
+        crossorigin="anonymous"></script>
 
+<script>
+// Find the cart from local storage
+if (localStorage.getItem('cart') == null) {
+    var cart = {};
+} else {
+    cart = JSON.parse(localStorage.getItem('cart'));
+}
+updateCart(cart); // Function to update the cart UI
+
+// Add or increment item in cart
+$('div').on('click', 'button.cart', function () {
+    var idstr = this.id.toString();
+    console.log(idstr);
+
+    if (cart[idstr] !== undefined) {
+        // If item already exists, increment the quantity
+        cart[idstr][0] += 1;
+    } else {
+        // Initialize with quantity 1 and get name/price from DOM
+        var qty = 1;
+        var name = document.getElementById('namepr' + idstr).innerHTML;
+        var price = document.getElementById('pricepr' + idstr).innerHTML;
+        cart[idstr] = [qty, name, price];
+    }
+
+    // Update the cart UI and save to local storage
+    updateCart(cart);
+    localStorage.setItem('cart', JSON.stringify(cart));
+
+    // Update cart item count in the UI
+    document.getElementById('cart').innerHTML = Object.keys(cart).length;
+    console.log(Object.keys(cart).length);
+
+    // Simulate a click on the popcart element
+    document.getElementById('popcart').click();
+});
+
+// Add popover to cart
+$('#popcart').popover();
+updatePopover(cart);
+
+function updatePopover(cart) {
+    console.log('we are inside update popover');
+    var popStr = "<h5>Cart for your items in my shopping cart</h5>";
+    popStr += "<div class='mx-2 my-2'>";
+    var i = 1;
+    for (var item in cart) {
+        popStr += "<b>" + i + "</b>. ";
+        popStr += document.getElementById('namepr' + item).innerHTML.slice(0, 19) + " ... " + "<b>" + cart[item][0] + "</b>" + " Qty: " + cart[item][0] + "<br>";
+        i += 1;
+    }
+
+    popStr += "</div> <a href='/checkout'><button class='btn btn-success' id='checkout'>Checkout</button></a> <button class='btn btn-dark' onclick='clearCart()' id='clearCart'>Clear Cart</button>";
+    document.getElementById('popcart').setAttribute('data-content', popStr);
+    $('#popcart').popover('show');
+    document.getElementById('popcart').click();
+}
+
+function clearCart() {
+    cart = {}; // Reset cart to empty object
+    for (var item in cart) {
+        // Reset the item in the DOM by changing the innerHTML back to "Add to Cart"
+        document.getElementById('divpr' + item).innerHTML = '<button id="' + item + '" class="btn btn-success cart">Add to Cart<i class="fa-solid fa-cart-shopping"></i</button>';
+    }
+
+    // Clear localStorage
+    localStorage.clear();
+
+    // Update the cart display in the UI
+    updateCart(cart);
+
+    // Simulate a click event to close the popover
+    let clear = document.getElementById("popcart").click();
+    document.getElementById("popcart").click();
+}
+
+function updateCart(cart) {
+    var sum = 0;
+    for (var item in cart) {
+        sum += cart[item][0]; // Corrected 'sun' to 'sum' and 'cart[item][0]' instead of 'cart[item)(0)'
+        
+        document.getElementById('divpr' + item).innerHTML = 
+            "<button id='minus" + item + "' class='btn btn-success minus'>-</button> " +
+            "<span id='valpr" + item + "'>" + cart[item][0] + "</span> " +
+            "<button id='plus" + item + "' class='btn btn-success plus'>+</button>";
+    }
+    localStorage.setItem('cart', JSON.stringify(cart));
+    document.getElementById('cart').innerHTML = sum;
+    console.log(cart);
+    updatePopover(cart);
+    document.getElementById("popcart").click();
+}
+
+// If plus or minus button is clicked, change the cart as well as the display value
+$('div').on("click", "button.minus", function() {
+    var a = this.id.slice(7); 
+    cart['pr' + a][0] = cart['pr' + a][0] - 1;
+    cart['pr' + a][0] = Math.max(cart['pr' + a][0], 1);
+    document.getElementById('valpr' + a).innerHTML = cart['pr' + a][0];
+    updateCart(cart);
+});
+
+$('div').on("click", "button.plus", function() {
+    var a = this.id.slice(6); 
+    cart['pr' + a][0] = cart['pr' + a][0] + 1;
+    
+    document.getElementById('valpr' + a).innerHTML = cart['pr' + a][0];
+    updateCart(cart);
+});
+</script>
+
+{% endblock content %}

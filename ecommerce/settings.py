@@ -14,16 +14,18 @@ from pathlib import Path
 import os
 import django.contrib.messages
 
-# Build paths inside the project like this: BASE_DIR / 'subdir' or BASE_DIR / 'subdir'
+# Build paths inside the project like this: BASE_DIR / 'subdir'
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-h@x5z50m@yejhbe+uhbiun2z#o$gu-_(bi#(rg3wr-fye5ha%*'
+SECRET_KEY = os.getenv(
+    "DJANGO_SECRET_KEY", "django-insecure-h@x5z50m@yejhbe+uhbiun2z#o$gu-_(bi#(rg3wr-fye5ha%*"
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DJANGO_DEBUG", "True") == "True"
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
 
 # Application definition
 INSTALLED_APPS = [
@@ -105,8 +107,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'aasthachaturvedy58@gmail.com'  # Replace with your email
-EMAIL_HOST_PASSWORD = 'flqs jqho jbuc dggt'  # Replace with your app password
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER', 'default_email@gmail.com')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD', 'default_password')
 
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
@@ -117,6 +119,9 @@ STATICFILES_DIRS = [
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_collected')  # Static files collection destination
+MEDIA_URL = '/media/'
+MEDIA_ROOT =os.path.join(BASE_DIR,"media")
+
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
@@ -125,3 +130,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MESSAGE_TAGS = {
     django.contrib.messages.ERROR: 'danger',
 }
+

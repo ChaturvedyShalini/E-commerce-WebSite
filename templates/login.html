@@ -16,8 +16,8 @@
         {% csrf_token %}
         
         <div class="form-group mb-3">
-            <label for="email">Email</label>
-            <input type="email" class="form-control p-2" id="email" name="email" required />
+            <label for="email">Username</label>
+            <input type="text" class="form-control p-2" id="email" name="email" required />
         </div>
 
         <div class="form-group mb-3">
@@ -27,6 +27,12 @@
 
         <button type="submit" class="btn btn-dark">Login</button>
         <br><br>
+
+        <span>
+    Forgot Password? 
+    <a href="/auth/request-reset-email/">Reset</a>
+</span>
+
 
         <p>New User? <a href="{% url 'signup' %}">Signup</a></p>
     </form>

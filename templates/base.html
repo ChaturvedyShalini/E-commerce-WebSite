@@ -25,6 +25,10 @@
   <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
   <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
   <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
   <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
 
   <!-- Main custom CSS File -->
@@ -44,24 +48,40 @@
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="/" class="nav-link scrollto active">Home</a></li>
-          <li><a href="/blog" class="nav-link scrollto">Blog</a></li>
+          
           <li><a href="/about" class="nav-link scrollto">About</a></li>
-          <li><a href="/orders" class="nav-link scrollto">Orders</a></li>
-          <li><a href="/profile" class="nav-link scrollto">My Profile</a></li>
+          <li><a href="/checkout" class="nav-link scrollto">Checkout</a></li>
+          <li><a href="/profile" class="nav-link scrollto">My Profile<i class="fa-regular fa-square-user"></i>
+</a></li>
+
+          <button type="button" class="nav-link scrollto bg-danger p-3 n-2 text-white" 
+        id="popcart" data-container="body" data-toggle="popover" 
+        data-placement="bottom" data-html="true"> <i class="fa-solid fa-cart-shopping"></i> 
+    Cart (<span id="cart">0</span>)
+</button>
+
+          
+
           {% if request.user.is_authenticated %}
-            <li><a class="nav-link scrollto" href="/auth/logout/">Logout</a> | {{ request.user.username }}</li>
+            <li><a class="nav-link scrollto" href="/auth/logout/">Logout<i class="fa-solid fa-right-bracket"></i>
+</a> | {{ request.user.username }}</li>
           {% else %}
             <li class="dropdown">
-              <a href="#"><span>SignIn</span> <i class="bi bi-chevron-down"></i></a>
+              <a href="#"><span>SignIn<i class="fa-solid fa-user"></i>
+</span> <i class="bi bi-chevron-down"></i></a>
               <ul>
-                <li><a href="/auth/signup/">Sign Up</a></li>
+                <li><a href="/auth/signup/">Sign Up<i class="fa-solid fa-user"></i>
+</a></li>
                 <li><a href="/auth/login/">Login</a></li>
               </ul>
             </li>
           {% endif %}
+
+
           <!-- Cart and Contact buttons with highlighted backgrounds -->
-          <li><a class="nav-link scrollto bg-danger p-3 m-2" href="/cart">Cart</a></li>
-          <li><a class="nav-link scrollto bg-success p-3 m-2" href="/contact">Contact</a></li>
+          
+          <li><a class="nav-link scrollto bg-success p-3 m-2" href="/contact">Contact<i class="fa-solid fa-message-middle"></i>
+</a></li>
         </ul>
         <!-- Mobile navigation toggle button -->
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>

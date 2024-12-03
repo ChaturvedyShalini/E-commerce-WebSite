@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %}Profile Page{% endblock title %}
+
+{% block body %}
+<section id="portfolio" class="portfolio">
+    <div class="container">
+        <h1>My Profile</h1>
+        <table class="table table-danger table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Order ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Products</th>
+                    <th scope="col">Amount Paid</th>
+                    <th scope="col">Payment Status</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Phone Number</th>
+                    <th scope="col">Delivery Status</th>
+                    <th scope="col">Delivered</th>
+                    <th scope="col">Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if items %}
+                    {% for i in items %}
+                        <tr>
+                            <th scope="row">{{ i.oid }}</th>
+                            <td>{{ i.name }}</td>
+                            <td>{{ i.items_json }}</td>
+                            <td>{{ i.amount }}</td>
+                            <td>{{ i.paymentstatus }}</td>
+                            <td>{{ i.address1 }}</td>
+                            <td>{{ i.phone }}</td>
+                            <td>
+                                {% if i.delivery_status %}
+                                    <i class="fa-solid fa-truck"></i> {{ i.delivery_status }}
+                                {% else %}
+                                    N/A
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if i.delivered %}
+                                    <i class="fa-solid fa-circle-check"></i> Delivered
+                                {% else %}
+                                    <i class="fa-solid fa-truck"></i> Not Delivered
+                                {% endif %}
+                            </td>
+                            <td>{{ i.date }}</td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="10">No orders available.</td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</section>
+{% endblock body %}
